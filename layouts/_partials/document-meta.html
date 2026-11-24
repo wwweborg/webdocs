@@ -1,0 +1,12 @@
+{{- $lastmod := .Params.lastmod -}}
+{{- $author := .Params.author | default .Params.editor -}}
+{{- if or $lastmod $author }}
+<div class="doc-meta" aria-label="Document metadata">
+  {{- with $lastmod }}
+    <span class="doc-meta-date">Last edited on <time datetime="{{ . | time.Format "2006-01-02" }}">{{ . | time.Format "January 2, 2006" }}</time></span>
+  {{- end }}
+  {{- with $author }}
+    <span class="doc-meta-author">Written by {{ . }}</span>
+  {{- end }}
+</div>
+{{- end }}

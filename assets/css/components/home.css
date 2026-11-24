@@ -1,0 +1,57 @@
+.home-content h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(2rem, 4vw, 2.7rem);
+  line-height: 1.2;
+  letter-spacing: -.045em;
+}
+
+.home-content h2 {
+  font-size: 2.4rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.home-content {
+  display: flex;
+  min-height: 60vh;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 40rem;
+  margin: 0 auto 0 0;
+  margin: 5rem 0 0 4rem;
+}
+
+.home-content > p {
+  color: var(--muted);
+  font-size: 1.2rem;
+}
+
+.button-primary {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 5rem;
+  background-color: var(--accent);
+  transition: ease 0.2s;
+}
+
+.button-primary:hover {
+  background: var(--accent-two);
+  color: white;
+}
+
+.button-secondary {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--surface);
+  padding: 1rem 1.5rem;
+  border-radius: 5rem;
+  margin-left: .8rem;
+  transition: ease 0.2s;
+}
+
+.button-secondary:hover {
+  background: var(--surface-two);
+  color: white;
+}

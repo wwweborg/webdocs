@@ -1,0 +1,6 @@
+{{- partial "head/css-resource.html" "css/main.css" }}
+{{- if .IsHome }}
+  {{- partial "head/css-resource.html" "css/home.css" }}
+{{- else if eq .Section "docs" }}
+  {{- partial "head/css-resource.html" "css/docs.css" }}
+{{- end }}

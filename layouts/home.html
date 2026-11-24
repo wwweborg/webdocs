@@ -1,0 +1,13 @@
+{{ define "main" }}
+  <article class="home-content">
+    {{ .Content }}
+    {{ with site.GetPage "docs" }}
+    <div class="buttons">
+      <a class="button-primary" href="{{ .RelPermalink }}">Read the Docs</a>
+      {{ with site.Params.githubURL }}
+      <a class="button-secondary" href="{{ . }}">View on GitHub</a>
+      {{ end }}
+    </div>
+    {{ end }}
+  </article>
+{{ end }}

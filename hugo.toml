@@ -1,0 +1,33 @@
+baseURL = 'https://example.org/'
+languageCode = 'en'
+title = 'Webdocs'
+enableRobotsTXT = true
+
+[menus]
+  [[menus.main]]
+    name = 'Home'
+    pageRef = '/'
+    weight = 10
+
+  [[menus.main]]
+    name = 'Docs'
+    pageRef = '/docs'
+    weight = 20
+
+  [[menus.main]]
+    name = 'About'
+    pageRef = '/about'
+    weight = '30'
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = '0.146.0'
+
+[params]
+  githubURL = "https://github.com/wwweborg/webdocs"
+
+  [params.banner]
+    # Change this key for each new announcement to show it again to dismissed users.
+    key = "docs-release-1"
+    message = "👉️ New version available. [Explore the changelog](/docs/)."

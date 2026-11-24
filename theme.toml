@@ -1,0 +1,11 @@
+name = 'Webdocs'
+license = 'MIT'
+licenselink = 'https://opensource.org/license/mit'
+description = 'Tema de Hugo para documentación con navegación lateral y diseño adaptable.'
+homepage = 'https://example.org/'
+tags = ['documentation', 'docs', 'responsive', 'dark mode']
+features = ['sidebar navigation', 'table of contents', 'dark mode', 'responsive layout']
+min_version = '0.146.0'
+
+[author]
+  name = 'Webdocs contributors'

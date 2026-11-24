@@ -1,0 +1,9 @@
+<aside class="sidebar" aria-label="Documentation navigation">
+  <nav>
+    {{ with site.GetPage "docs" }}
+      {{ partial "sidebar-tree.html" (dict "page" $ "section" .) }}
+    {{ else }}
+      <p class="sidebar-empty">Add a <code>content/docs</code> section to get started.</p>
+    {{ end }}
+  </nav>
+</aside>

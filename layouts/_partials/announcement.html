@@ -1,0 +1,12 @@
+{{- with site.Params.banner }}
+  {{- with .message }}
+    {{- $message := . }}
+    {{- $key := site.Params.banner.key | default "announcement" }}
+<aside class="announcement" data-announcement data-announcement-key="{{ $key }}" aria-label="Update announcement">
+  <div class="announcement-inner">
+    <div class="announcement-message">{{ $.RenderString $message }}</div>
+    <button class="announcement-dismiss" type="button" aria-label="Dismiss announcement" title="Dismiss announcement">×</button>
+  </div>
+</aside>
+  {{- end }}
+{{- end }}

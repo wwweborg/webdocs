@@ -1,0 +1,13 @@
+{{- $current := .page -}}
+{{- $section := .section -}}
+<ul class="sidebar-list">
+  {{- range $section.Pages.ByWeight }}
+    {{- $active := eq .RelPermalink $current.RelPermalink }}
+    <li>
+      <a href="{{ .RelPermalink }}"{{ if $active }} aria-current="page" class="active"{{ end }}>{{ .LinkTitle }}</a>
+      {{- if .IsSection }}
+        {{- partial "sidebar-tree.html" (dict "page" $current "section" .) }}
+      {{- end }}
+    </li>
+  {{- end }}
+</ul>

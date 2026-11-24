@@ -1,0 +1,6 @@
+<header class="site-header">
+  <a class="brand" href="{{ site.Home.RelPermalink }}"><img class="brand-logo" src="{{ "favicon.ico" | relURL }}" alt="" aria-hidden="true">{{ site.Title }}</a>
+  <nav class="top-nav" aria-label="Main navigation">
+    {{ range site.Menus.main }}<a href="{{ .URL }}">{{ .Name }}</a>{{ end }}
+  </nav>
+</header>
