@@ -1,4 +1,4 @@
-<aside class="sidebar" aria-label="Documentation navigation">
+<aside id="docs-sidebar" class="sidebar" aria-label="Documentation navigation" data-docs-sidebar>
   <nav>
     {{ with site.GetPage "docs" }}
       {{ partial "sidebar-tree.html" (dict "page" $ "section" .) }}

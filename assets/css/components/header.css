@@ -1,4 +1,135 @@
-header {
-  border-bottom: 1px solid #222;
-  margin-bottom: 1rem;
+/* = [ Header ] = */
+.site-header {
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+  padding: 0 max(1.5rem, calc((100vw - 1440px) / 2));
+  background-color: var(--surface);
+}
+
+/* [ Header: Logo ] */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: -.02em;
+}
+
+.brand-logo {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+}
+
+/* [ Header: Navigation ] */
+.top-nav {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.top-nav a {
+  display: inline-flex;
+  align-items: center;
+  padding: .4rem .65rem;
+  border-radius: 1.5rem;
+  corner-shape: squircle;
+  transition: background-color .15s ease;
+}
+
+.top-nav a:hover {
+  color: var(--text);
+  background: var(--surface-two);
+}
+
+.sidebar-menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: .45rem;
+  border: 1px solid var(--border);
+  border-radius: .55rem;
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.sidebar-menu-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.sidebar-menu-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.sidebar-menu-icon {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.sidebar-menu-icon-close {
+  display: none;
+}
+
+.sidebar-menu-toggle[aria-expanded="true"] .sidebar-menu-icon-open {
+  display: none;
+}
+
+.sidebar-menu-toggle[aria-expanded="true"] .sidebar-menu-icon-close {
+  display: block;
+}
+
+.sidebar-backdrop {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .brand {
+    gap: .4rem;
+    font-size: 1.2rem;
+  }
+
+  .brand-logo {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .sidebar-menu-toggle {
+    display: inline-flex;
+    flex: 0 0 auto;
+  }
+
+  .top-nav {
+    gap: .15rem;
+    margin-left: auto;
+    margin-right: .5rem;
+    font-size: .82rem;
+  }
+
+  .top-nav a {
+    display: inline-flex;
+    padding: .35rem .4rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .top-nav {
+    gap: 0;
+    margin-right: .25rem;
+    font-size: .75rem;
+  }
+
+  .top-nav a {
+    padding: .3rem;
+  }
 }

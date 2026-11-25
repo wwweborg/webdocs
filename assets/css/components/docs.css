@@ -1,8 +1,23 @@
+/* ==========
+
+#METADATA
+= NameFile: docs
+= Extension: .css
+= Author: @jainnuck "github"
+
+#TABLE_OF_CONTENT
+= Mian
+= Left sidebar
+
+========== */
+
+/* = [ Main ] = */
 .docs-shell.has-sidebar {
   grid-template-columns: 16rem minmax(0, 1fr) 13rem;
   gap: 3rem;
 }
 
+/* = [ Left sidebar ] = */
 .sidebar {
   position: sticky;
   top: calc(var(--header-height) + 1.5rem);
@@ -10,10 +25,109 @@
   max-height: calc(100vh - var(--header-height) - 3rem);
   overflow: auto;
   padding-right: .75rem;
-  font-size: .875rem;
+  font-size: 1rem;
 }
 
-.sidebar-label,
+/* [ Left sidebar: Menu ] */
+.sidebar-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-list li {
+  margin: .1rem 0;
+}
+
+.sidebar-children .sidebar-list {
+  margin: .2rem 0 .5rem .75rem;
+  padding-left: .75rem;
+  border-left: 1px solid var(--border);
+}
+
+.sidebar-item-row {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-item-row > a {
+  flex: 1;
+  min-width: 0;
+}
+
+.sidebar-toggle {
+  display: grid;
+  flex: 0 0 2rem;
+  place-items: center;
+  width: 1rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 1rem;
+  corner-shape: squircle;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.sidebar-toggle:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.sidebar-toggle span {
+  width: .4rem;
+  height: .4rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateX(-2px) rotate(-45deg);
+  transition: transform .15s ease;
+}
+
+.sidebar-item.is-open > .sidebar-item-row .sidebar-toggle span {
+  transform: rotate(45deg);
+}
+
+.sidebar-children[hidden] {
+  display: none;
+}
+
+.no-js .sidebar-children[hidden] {
+  display: block;
+}
+
+.sidebar-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.sidebar-list a {
+  display: block;
+  padding: .5rem .65rem;
+  margin-bottom: .2rem;
+  border-radius: 2rem;
+  corner-shape: squircle;
+  color: var(--muted);
+  transition: ease 0.1s;
+}
+
+.sidebar-list a:hover {
+  color: var(--text);
+  background: var(--surface);
+}
+
+.sidebar-list a.active {
+  color: var(--text);
+  background: var(--surface);
+  font-weight: 600;
+}
+
+.sidebar-empty {
+  color: var(--muted);
+  font-size: .85rem;
+}
+
+/* = [ Right sidebar ] = */
 .toc-title {
   margin: 0 0 .75rem;
   color: var(--muted);
@@ -23,45 +137,6 @@
   text-transform: uppercase;
 }
 
-.sidebar-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.sidebar-list .sidebar-list {
-  margin: .2rem 0 .5rem .75rem;
-  padding-left: .75rem;
-  border-left: 1px solid var(--border);
-}
-
-.sidebar-list li {
-  margin: .1rem 0;
-}
-
-.sidebar-list a {
-  display: block;
-  padding: .35rem .65rem;
-  border-radius: .4rem;
-  color: var(--muted);
-}
-
-.sidebar-list a:hover {
-  color: var(--text);
-  background: var(--surface);
-}
-
-.sidebar-list a.active {
-  color: var(--accent);
-  background: var(--accent-soft);
-  font-weight: 600;
-}
-
-.sidebar-empty {
-  color: var(--muted);
-  font-size: .85rem;
-}
-
 .content-area {
   min-width: 0;
 }
@@ -69,6 +144,7 @@
 .doc-article {
   max-width: 52rem;
   margin: 0 auto;
+  line-height: 1.6;
 }
 
 .breadcrumbs {
@@ -111,7 +187,7 @@
 }
 
 .doc-article p {
-  margin: 1rem 0;
+  margin: 1em 0;
   font-size: 1.1rem;
   font-weight: 400;
 }
@@ -133,9 +209,10 @@
   text-align: right;
 }
 
-.doc-article b,
-.doc-article strong {
-  font-weight: 500;
+.doc-article p b,
+.doc-article p strong {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
 }
 
 .doc-article p a,
@@ -185,7 +262,8 @@
 .doc-article code,
 .sidebar code {
   padding: .15rem .35rem;
-  border-radius: .3rem;
+  border-radius: 1rem;
+  corner-shape: squircle;
   background: var(--code);
   font-size: .88em;
 }
@@ -193,10 +271,51 @@
 .doc-article pre {
   overflow: auto;
   padding: 1rem 1.2rem;
-  border-radius: .6rem;
+  border-radius: 2rem;
+  corner-shape: squircle;
   background: var(--surface) !important;
   color: var(--text) !important;
   line-height: 1.55;
+}
+
+.code-block {
+  position: relative;
+  max-width: 100%;
+}
+
+.code-copy-button {
+  position: absolute;
+  z-index: 1;
+  top: .55rem;
+  right: .65rem;
+  padding: .4rem .7rem;
+  border-radius: 5rem;
+  corner-shape: squircle;
+  background: var(--surface-two);
+  color: var(--muted);
+  font-size: .78rem;
+  line-height: 1.2;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s ease, border-color .15s ease, color .15s ease, background-color .15s ease;
+  border: none;
+}
+
+.code-block:hover .code-copy-button,
+.code-copy-button:focus-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.code-copy-button:hover {
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+.code-copy-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .doc-article pre code {
@@ -240,8 +359,9 @@
   flex-direction: column;
   gap: .35rem;
   padding: 1rem 1.1rem;
-  border: 1px solid var(--border);
-  border-radius: .7rem;
+  background-color: var(--surface);
+  border-radius: 2rem;
+  corner-shape: squircle;
   transition: border-color .15s, background .15s;
 }
 
@@ -253,7 +373,7 @@
 .doc-card-title {
   display: flex;
   justify-content: space-between;
-  font-weight: 650;
+  font-weight: 500;
 }
 
 .doc-card-description {
@@ -304,7 +424,8 @@
   max-width: 48%;
   padding: .7rem .9rem;
   background-color: var(--surface);
-  border-radius: .6rem;
+  border-radius: 2rem;
+  corner-shape: squircle;
 }
 
 .page-nav a span {
@@ -315,51 +436,142 @@
 .page-nav .next {
   margin-left: auto;
   text-align: right;
+}
+
 @media (max-width: 1100px) {
   .docs-shell.has-sidebar {
     grid-template-columns: 14rem minmax(0, 1fr);
     gap: 2rem;
   }
 
-    .toc {
-      display: none;
-    }
+  .toc {
+    display: none;
   }
 }
 
 @media (max-width: 720px) {
+  body.sidebar-open {
+    overflow: hidden;
+  }
+
   .docs-shell.has-sidebar {
     display: block;
   }
 
   .sidebar {
-    position: static;
+    position: fixed;
+    z-index: 12;
+    top: var(--header-height);
+    bottom: 0;
+    left: 0;
+    width: min(21rem, 88vw);
     max-height: none;
-    margin: -1.5rem -1.2rem 1.5rem;
-    padding: .6rem 1.2rem;
+    overflow: auto;
+    padding: 1rem;
+    border-right: 1px solid var(--border);
+    background: var(--bg);
+    box-shadow: 12px 0 32px color-mix(in srgb, var(--text) 12%, transparent);
+    transform: translateX(-105%);
+    visibility: hidden;
+    transition: transform .2s ease, visibility .2s ease;
+  }
+
+  .sidebar.is-visible {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  .sidebar-backdrop:not([hidden]) {
+    display: block;
+    position: fixed;
+    z-index: 11;
+    inset: var(--header-height) 0 0;
+    width: 100%;
+    height: calc(100dvh - var(--header-height));
+    padding: 0;
+    border: 0;
+    background: color-mix(in srgb, #000 48%, transparent);
+  }
+
+  .no-js .sidebar {
+    position: static;
+    width: auto;
+    max-height: none;
+    margin: 0 0 1.5rem;
+    padding: .75rem 0;
+    border: 0;
     border-bottom: 1px solid var(--border);
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+    visibility: visible;
   }
 
-  .sidebar-label {
-    margin-bottom: .25rem;
-  }
-
-  .sidebar > nav > .sidebar-list {
-    display: flex;
-    gap: .25rem;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-
-  .sidebar > nav > .sidebar-list > li > .sidebar-list {
+  .no-js .sidebar-menu-toggle {
     display: none;
   }
 
   .sidebar-list a {
-    padding: .3rem .55rem;
+    padding: .45rem .6rem;
   }
 
   .doc-cards {
     grid-template-columns: 1fr;
+  }
+
+  .doc-article h1 {
+    font-size: clamp(1.8rem, 8vw, 2.35rem);
+  }
+
+  .doc-article h2 {
+    margin-top: 2.1rem;
+    font-size: 1.45rem;
+  }
+
+  .doc-article h3 {
+    font-size: 1.15rem;
+  }
+
+  .doc-article p,
+  .doc-article li {
+    font-size: 1rem;
+  }
+
+  .doc-article pre {
+    padding: .85rem;
+    font-size: .85rem;
+  }
+
+  .page-nav {
+    align-items: stretch;
+    gap: .6rem;
+  }
+
+  .page-nav a {
+    flex: 1 1 0;
+    max-width: 50%;
+    min-width: 0;
+    padding: .65rem;
+  }
+
+  .page-nav a strong {
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (hover: none) {
+  .code-copy-button {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar {
+    transition: none;
+  }
+
+  .code-copy-button {
+    transition: none;
   }
 }

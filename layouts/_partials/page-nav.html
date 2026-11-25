@@ -1,6 +1,24 @@
-{{- $pages := .CurrentSection.RegularPages.ByWeight -}}
-{{- $prev := $pages.Next . -}}
-{{- $next := $pages.Prev . -}}
+{{- $section := site.GetPage (printf "/%s" .Section) -}}
+{{- $scratch := newScratch -}}
+{{- $scratch.Set "pages" (slice) -}}
+{{- partial "page-nav-collect.html" (dict "section" $section "scratch" $scratch) -}}
+{{- $pages := $scratch.Get "pages" -}}
+{{- $currentIndex := -1 -}}
+{{- range $index, $page := $pages -}}
+  {{- if eq $page.RelPermalink $.RelPermalink -}}
+    {{- $currentIndex = $index -}}
+  {{- end -}}
+{{- end -}}
+{{- $prev := false -}}
+{{- $next := false -}}
+{{- if ge $currentIndex 0 -}}
+  {{- if gt $currentIndex 0 -}}
+    {{- $prev = index $pages (sub $currentIndex 1) -}}
+  {{- end -}}
+  {{- if lt $currentIndex (sub (len $pages) 1) -}}
+    {{- $next = index $pages (add $currentIndex 1) -}}
+  {{- end -}}
+{{- end -}}
 {{- if or $prev $next }}
 <nav class="page-nav" aria-label="Page navigation">
   {{ with $prev }}<a href="{{ .RelPermalink }}"><span>← Previous</span><strong>{{ .LinkTitle }}</strong></a>{{ else }}<span></span>{{ end }}

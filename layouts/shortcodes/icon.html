@@ -1,0 +1,6 @@
+{{- $name := .Get "name" | default (.Get 0) | default "info" -}}
+{{- $label := .Get "label" -}}
+{{- $class := .Get "class" | default "inline-icon" -}}
+{{- if $label }}<span class="icon-with-label" role="img" aria-label="{{ $label }}">{{ end -}}
+{{ partial "meteor-icon.html" (dict "name" $name "class" $class) }}
+{{- if $label }}</span>{{ end -}}

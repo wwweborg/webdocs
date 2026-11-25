@@ -1,0 +1,9 @@
+{{- $section := .section -}}
+{{- $scratch := .scratch -}}
+{{- range $section.Pages.ByWeight -}}
+  {{- $pages := $scratch.Get "pages" | append . -}}
+  {{- $scratch.Set "pages" $pages -}}
+  {{- if .IsSection -}}
+    {{- partial "page-nav-collect.html" (dict "section" . "scratch" $scratch) -}}
+  {{- end -}}
+{{- end -}}

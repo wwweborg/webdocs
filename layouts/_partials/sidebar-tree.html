@@ -3,10 +3,22 @@
 <ul class="sidebar-list">
   {{- range $section.Pages.ByWeight }}
     {{- $active := eq .RelPermalink $current.RelPermalink }}
-    <li>
-      <a href="{{ .RelPermalink }}"{{ if $active }} aria-current="page" class="active"{{ end }}>{{ .LinkTitle }}</a>
-      {{- if .IsSection }}
-        {{- partial "sidebar-tree.html" (dict "page" $current "section" .) }}
+    {{- $hasChildren := and .IsSection (gt (len .Pages) 0) }}
+    {{- $branchOpen := or $active (.IsAncestor $current) }}
+    {{- $childrenID := printf "sidebar-%s" (urlize .RelPermalink) }}
+    <li class="sidebar-item{{ if $branchOpen }} is-open{{ end }}">
+      <div class="sidebar-item-row">
+        <a href="{{ .RelPermalink }}"{{ if $active }} aria-current="page" class="active"{{ end }}>{{ .LinkTitle }}</a>
+        {{- if $hasChildren }}
+          <button class="sidebar-toggle" type="button" aria-label="Toggle {{ .LinkTitle }} submenu" aria-expanded="{{ $branchOpen }}" aria-controls="{{ $childrenID }}">
+            <span aria-hidden="true"></span>
+          </button>
+        {{- end }}
+      </div>
+      {{- if $hasChildren }}
+        <div id="{{ $childrenID }}" class="sidebar-children"{{ if not $branchOpen }} hidden{{ end }}>
+          {{- partial "sidebar-tree.html" (dict "page" $current "section" .) }}
+        </div>
       {{- end }}
     </li>
   {{- end }}

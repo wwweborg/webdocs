@@ -1,0 +1,449 @@
+/*
+.callout,
+.badge {
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+.callout-warning,
+.badge-warning {
+  --callout-accent: #8a5a00;
+}
+
+.callout-error,
+.badge-error {
+  --callout-accent: #a32626;
+}
+
+.callout-important,
+.badge-important {
+  --callout-accent: #7040a0;
+}
+
+.callout-idea,
+.badge-idea {
+  --callout-accent: #24723c;
+}
+*/
+
+/* ==========
+
+#METADATA
+= NameFile: shortcodes
+= Extension: .css
+= Author: @jainnuck "GitHub"
+
+#TABLE_OF_CONTENT
+= Callout
+
+========== */
+
+.callout {
+  display: flex;
+  align-items: flex-start;
+  gap: .8rem;
+  margin: 1.25rem 0;
+  padding: 1rem 1.15rem;
+  border-radius: 2rem;
+  corner-shape: squircle;
+}
+
+.callout-info {
+  background-color: var(--bg-info);
+  color: var(--color-info);
+}
+
+.callout-warning {
+  background-color: var(--bg-warning);
+  color: var(--color-warning);
+}
+
+.callout-error {
+  background-color: var(--bg-error);
+  color: var(--color-error);
+}
+
+.callout-important {
+  background-color: var(--bg-important);
+  color: var(--color-important);
+}
+
+.callout-idea {
+  background-color: var(--bg-idea);
+  color: var(--color-idea);
+}
+
+.callout-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  margin-top: .12rem;
+  color: inherit;
+}
+
+.callout-icon .meteor-icon {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.callout-content pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* = [ Badges ] = */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .18rem .58rem;
+  border-radius: 1rem;
+  corner-shape: squircle;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 400;
+  vertical-align: .08em;
+  white-space: nowrap;
+}
+
+.badge-icon {
+  width: .95rem;
+  height: .95rem;
+  flex: 0 0 auto;
+}
+
+.badge-info {
+  background-color: var(--bg-info);
+  color: var(--color-info);
+}
+
+.badge-warning {
+  background-color: var(--bg-warning);
+  color: var(--color-warning);
+}
+
+.badge-error {
+  background-color: var(--bg-error);
+  color: var(--color-error);
+}
+
+.badge-important {
+  background-color: var(--bg-important);
+  color: var(--color-important);
+}
+
+.badge-idea {
+  background-color: var(--bg-idea);
+  color: var(--color-idea);
+}
+
+.shortcode-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 1.1rem 1.2rem;
+  border-radius: 2rem;
+  corner-shape: squircle;
+  background: var(--surface);
+}
+
+.shortcode-card-static {
+  cursor: default;
+}
+
+.shortcode-card-main {
+  display: flex;
+  align-items: flex-start;
+  gap: .8rem;
+  min-width: 0;
+}
+
+.shortcode-card-copy {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+
+.shortcode-card-title {
+  font-weight: 600;
+}
+
+.shortcode-card-description {
+  color: var(--muted);
+  font-size: .92rem;
+  line-height: 1.5;
+}
+
+.shortcode-card-content > :first-child {
+  margin-top: 0;
+}
+
+.shortcode-card-content > :last-child {
+  margin-bottom: 0;
+}
+
+.shortcode-card-icon {
+  flex: 0 0 auto;
+  width: 1.35rem;
+  height: 1.35rem;
+  color: var(--accent);
+}
+
+.shortcode-card-arrow {
+  flex: 0 0 auto;
+  width: 1.2rem;
+  height: 1.2rem;
+  color: var(--muted);
+}
+
+/* = [ Details ] = */
+.shortcode-details {
+  margin: 1rem 0;
+  overflow: hidden;
+  border-radius: 2rem;
+  corner-shape: squircle;
+  background: var(--surface);
+}
+
+.shortcode-details[open] {
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+}
+
+.shortcode-details summary {
+  padding: .85rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.shortcode-details summary::marker {
+  color: var(--accent);
+}
+
+.shortcode-details summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -3px;
+}
+
+.shortcode-details-content {
+  padding: 0 1rem .9rem;
+}
+
+.shortcode-details-content > :first-child {
+  margin-top: 0;
+}
+
+.shortcode-details-content > :last-child {
+  margin-bottom: 0;
+}
+
+.inline-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -.15em;
+}
+
+.icon-with-label {
+  display: inline-flex;
+  align-items: center;
+  gap: .35em;
+}
+
+.shortcode-icon-unknown {
+  display: inline-block;
+  font-size: .75em;
+}
+
+/* = [ Steps ] = */
+.steps {
+  margin: 1.25rem 0;
+}
+
+.steps ol {
+  counter-reset: shortcode-step;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.steps li {
+  counter-increment: shortcode-step;
+  position: relative;
+  margin: 0;
+  padding: 0 0 2rem 2.3rem;
+}
+
+/* Insignia con el número */
+.steps li::before {
+  content: counter(shortcode-step);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: 1rem;
+  corner-shape: squircle;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+/* Línea vertical que conecta los pasos */
+.steps li::after {
+  content: "";
+  position: absolute;
+  top: calc(1.65rem + .35rem);
+  bottom: .35rem;
+  left: calc(1.65rem / 2 - .5px);
+  width: 1px;
+  background: var(--surface);
+}
+
+/* Título del paso (el primer elemento, p. ej. <h3>) */
+.steps li > :first-child {
+  margin: 0 0 1.1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.65rem;
+  color: #fff;
+}
+
+/* Texto del paso */
+.steps li p {
+  margin: 0 0 .9rem;
+  font-size: .95rem;
+  line-height: 1.6;
+  color: #e5e5e5;
+}
+
+/* Subtítulos dentro de un paso: no suman al contador */
+.steps li h4,
+.steps li h5 {
+  margin: 1.5rem 0 .75rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #fff;
+}
+
+.steps li > :last-child {
+  margin-bottom: 0;
+}
+
+/* = [ Tabs ] = */
+.tab-group {
+  margin: 1.25rem 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 2rem;
+  corner-shape: squircle;
+  background: var(--bg);
+}
+
+.tab-list {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  padding: 0;
+  border: 0;
+  background: var(--surface);
+  scrollbar-width: thin;
+}
+
+.tab-button {
+  padding: .85rem 1.2rem;
+  border: 0;
+  border-radius: 0;
+  background-color: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color .15s ease, color .15s ease;
+}
+
+.tab-button:hover {
+  background: color-mix(in srgb, var(--text) 5%, transparent);
+  color: var(--text);
+}
+
+.tab-button[aria-selected="true"] {
+  background: var(--surface-two);
+  color: var(--text);
+  font-weight: 500;
+}
+
+.tab-button:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline: 2px solid var(--accent);
+  outline-offset: -3px;
+}
+
+.tab-panels {
+  padding: 0;
+  background: var(--surface);
+}
+
+.tab-panel > :first-child {
+  margin-top: 0;
+}
+
+.tab-panel > :last-child {
+  margin-bottom: 0;
+}
+
+.tab-panel pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.tab-panel .highlight {
+  margin: 0;
+  background: transparent !important;
+}
+
+.tab-panel pre {
+  margin: 0;
+  padding: 1.25rem 1.5rem;
+  border-radius: 0 0 .65rem .65rem;
+  background: var(--surface-two) !important;
+  color: var(--text) !important;
+  line-height: 1.6;
+}
+
+.tab-panel pre code {
+  color: inherit;
+}
+
+.tab-panel .code-copy-button {
+  display: none;
+}
+
+.js .tab-panel[hidden] {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .callout {
+    gap: .65rem;
+    padding: .85rem;
+  }
+
+  .shortcode-card {
+    padding: .9rem;
+  }
+
+  .tab-button {
+    padding: .75rem 1rem;
+  }
+
+  .tab-panel pre {
+    padding: 1rem 1.2rem;
+  }
+}

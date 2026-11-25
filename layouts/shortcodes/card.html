@@ -1,0 +1,21 @@
+{{- $href := .Get "href" -}}
+{{- $title := .Get "title" | default "Ver más" -}}
+{{- $class := "shortcode-card" -}}
+{{- if not $href -}}
+  {{- $class = printf "%s shortcode-card-static" $class -}}
+{{- end -}}
+{{- if $href -}}<a class="{{ $class }}" href="{{ $href }}">
+{{- else -}}<div class="{{ $class }}">
+{{- end }}
+  <span class="shortcode-card-main">
+    {{ with .Get "icon" }}{{ partial "meteor-icon.html" (dict "name" . "class" "shortcode-card-icon") }}{{ end }}
+    <div class="shortcode-card-copy">
+      <span class="shortcode-card-title">{{ $title }}</span>
+      {{ with .Get "description" }}<span class="shortcode-card-description">{{ . }}</span>{{ end }}
+      {{ with $.Inner }}<div class="shortcode-card-description shortcode-card-content">{{ . | markdownify }}</div>{{ end }}
+    </div>
+  </span>
+  {{- if $href }}{{ partial "meteor-icon.html" (dict "name" "arrow-right" "class" "shortcode-card-arrow") }}{{ end }}
+{{- if $href }}</a>
+{{- else }}</div>
+{{- end }}

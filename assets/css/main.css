@@ -1,8 +1,73 @@
+/* ==========
+
+#METADATA
+= NameFile: main
+= Extension: .css
+= Description: Hugo theme for documentation.
+= Version: #0.1.2026-11.24
+= Author: @jainnuck "GitHub"
+= Org: @wwweborg "GitHub"
+= Tags: "Docs", "HTML", "CSS", "Hugo"
+= Keywords: [`HyperText Markup Language`, `Cascading Style Sheets`, `JavaScript`, `Markdown`]
+
+#TABLE_OF_CONTENT
+= Imports
+= Fonts
+  = Inter (400)
+  = Inter (500)
+  = Inter Bold
+  = Google Sans Code (400)
+= General Styles
+= Content
+= Code text
+= Mobile
+
+========== */
+
+/* = [ 
+
+#Imports
+
+#CONTEXT
+= /assets
+  = /css
+    = /components
+      = .announcement.css
+      = .docs.css
+      = .footer.css
+      = .header.css
+      = .home.css
+      = .variables.css
+
+] = */
 @import "/css/components/variables.css";
 @import "/css/components/announcement.css";
 @import "/css/components/home.css";
 @import "/css/components/docs.css";
+@import "/css/components/header.css";
+@import "/css/components/footer.css";
+@import "/css/components/shortcodes.css";
 
+/* = [
+
+#Fonts
+
+#Context
+= /assets
+  = /fonts
+    = /google-sans-code
+      = .code.ttf
+      = .OFL.txt
+      = .README.txt
+    = /inter
+      = .text.ttf
+      = .text-medium.ttf
+      = .text-bold.ttf
+      = .OFL.txt
+      = README.txt
+
+] = */
+/* [ Inter (400) ]  */
 @font-face {
   font-family: 'Inter';
   src: url("../fonts/inter/text.ttf") format("truetype");
@@ -10,6 +75,7 @@
   font-style: normal;
 }
 
+/* [ Inter (500) ] */
 @font-face {
   font-family: 'Inter';
   src: url("../fonts/inter/text-medium.ttf") format("truetype");
@@ -18,12 +84,21 @@
 }
 
 @font-face {
+  font-family: 'Inter';
+  src: url("../fonts/inter/text-bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* [ Google Sans Code (400) ] */
+@font-face {
   font-family: 'Google Sans Code';
   src: url("../fonts/google-sans-code/code.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 
+/* = [ General Styles ] = */
 * {
   box-sizing: border-box;
 }
@@ -54,66 +129,7 @@ button {
   font: inherit;
 }
 
-.skip-link {
-  position: fixed;
-  z-index: 20;
-  top: -4rem;
-  left: 1rem;
-  padding: .5rem .75rem;
-  background: var(--bg);
-  border: 1px solid var(--border);
-}
-
-.skip-link:focus {
-  top: .5rem;
-}
-
-.site-header {
-  position: sticky;
-  z-index: 10;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: var(--header-height);
-  padding: 0 max(1.5rem, calc((100vw - 1440px) / 2));
-  background-color: var(--surface);
-}
-
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: .6rem;
-  font-size: 1.5rem;
-  font-weight: 400;
-  letter-spacing: -.02em;
-}
-
-.brand-logo {
-  width: 1.5rem;
-  height: 1.5rem;
-  object-fit: contain;
-}
-
-.top-nav {
-  display: flex;
-  align-items: center;
-  font-size: 1rem;
-}
-
-.top-nav a {
-  display: inline-flex;
-  align-items: center;
-  padding: .4rem .65rem;
-  border-radius: .5rem;
-  transition: background-color .15s ease;
-}
-
-.top-nav a:hover {
-  color: var(--text);
-  background: var(--surface-two);
-}
-
+/* = [ Content ] = */
 .docs-shell {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -122,35 +138,21 @@ button {
   margin: 0 auto;
   padding: 2rem 2rem 3rem;
 }
-.site-footer {
-  display: flex;
-  justify-content: space-between;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 1.2rem 2rem;
-  background-color: var(--surface);
-  color: var(--muted);
-  font-size: 1rem;
-}
 
+/* = [ Code text ] = */
 .language-text {
   font-family: 'Google Sans Code';
 }
+
 code {
   font-family: 'Google Sans Code';
 }
+
+/* = [ Mobile ] = */
 @media (max-width: 720px) {
   .site-header {
     height: 3.5rem;
     padding: 0 1rem;
-  }
-
-  .top-nav {
-    gap: .85rem;
-  }
-
-  .top-nav a {
-    display: none;
   }
 
   .docs-shell {

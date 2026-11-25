@@ -1,0 +1,5 @@
+{{- $open := .Get "open" | lower -}}
+<details class="shortcode-details"{{ if in (slice "true" "open") $open }} open{{ end }}>
+  <summary>{{ .Get "title" | default "Más detalles" }}</summary>
+  <div class="shortcode-details-content">{{ .Inner | markdownify }}</div>
+</details>

@@ -1,0 +1,27 @@
+{{- $name := .name | default "info" -}}
+{{- $class := .class | default "" -}}
+{{- $paths := dict
+  "info" `<circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/>`
+  "warning" `<path d="M10.3 3.9 2.6 17.2A2 2 0 0 0 4.3 20h15.4a2 2 0 0 0 1.7-2.8L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4m0 3h.01"/>`
+  "error" `<circle cx="12" cy="12" r="9"/><path d="m9 9 6 6m0-6-6 6"/>`
+  "important" `<path d="M12 3 14.8 9.2 21 12l-6.2 2.8L12 21l-2.8-6.2L3 12l6.2-2.8L12 3Z"/>`
+  "idea" `<path d="M9 18h6m-5 3h4m-5-6.5a6 6 0 1 1 6 0c-.8.6-1 1.3-1 2.5h-4c0-1.2-.2-1.9-1-2.5Z"/>`
+  "sparkles" `<path d="m12 3 1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2L12 3Z"/><path d="m19 14 1 2.5 2.5 1-2.5 1L19 21l-1-2.5-2.5-1 2.5-1 1-2.5ZM5 2l.8 2.2L8 5l-2.2.8L5 8l-.8-2.2L2 5l2.2-.8L5 2Z"/>`
+  "rocket" `<path d="M4.5 16.5c-1.5 1.3-2 4.5-2 4.5s3.2-.5 4.5-2c.7-.8.7-2 0-2.5-.6-.7-1.7-.7-2.5 0Z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.5C14.5 4 20 3 20 3s-1 5.5-5.5 9a22 22 0 0 1-3.5 2Z"/><path d="M9 12H5s.5-2.5 3-3m4 6v4s2.5-.5 3-3"/>`
+  "arrow-right" `<path d="M4 12h16m-7-7 7 7-7 7"/>`
+  "chevron-right" `<path d="m9 18 6-6-6-6"/>`
+  "external-link" `<path d="M13 5h6v6m0-6-9 9"/><path d="M18 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>`
+  "check" `<path d="m5 12 4 4L19 6"/>`
+  "copy" `<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/>`
+-}}
+{{- $path := index $paths $name -}}
+{{- if $path }}
+<svg class="meteor-icon{{ with $class }} {{ . }}{{ end }}" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{{ $path | safeHTML }}</svg>
+{{- else }}
+  {{- $svg := resources.Get (printf "icons/meteor/%s.svg" $name) -}}
+  {{- if $svg }}
+    {{- $svg.Content | replace "<svg" (printf "<svg class=\"meteor-icon %s\" aria-hidden=\"true\"" $class) | safeHTML }}
+  {{- else }}
+    <span class="shortcode-icon-unknown" aria-hidden="true">{{ $name }}</span>
+  {{- end }}
+{{- end }}

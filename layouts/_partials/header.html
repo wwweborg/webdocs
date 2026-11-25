@@ -3,4 +3,10 @@
   <nav class="top-nav" aria-label="Main navigation">
     {{ range site.Menus.main }}<a href="{{ .URL }}">{{ .Name }}</a>{{ end }}
   </nav>
+  {{ if eq .Section "docs" }}
+    <button class="sidebar-menu-toggle" type="button" aria-label="Open documentation menu" aria-expanded="false" aria-controls="docs-sidebar" data-sidebar-toggle>
+      <svg class="i i-bars sidebar-menu-icon sidebar-menu-icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6H4m16 12H4m16-6H4"></path></svg>
+      <svg class="i i-xmark sidebar-menu-icon sidebar-menu-icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+    </button>
+  {{ end }}
 </header>

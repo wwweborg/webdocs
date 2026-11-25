@@ -1,6 +1,6 @@
 +++
-draft = true
-title = 'other new'
+draft = false
+title = 'New'
 weight = 1
 +++
 

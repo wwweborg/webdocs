@@ -4,9 +4,9 @@
   {{ partial "head.html" . }}
 </head>
 <body>
-  <a class="skip-link" href="#content">Skip to content</a>
   {{ partial "announcement.html" . }}
   {{ partial "header.html" . }}
+  {{ if eq .Section "docs" }}<button class="sidebar-backdrop" type="button" aria-label="Close documentation menu" data-sidebar-backdrop hidden></button>{{ end }}
   <div class="docs-shell{{ if eq .Section "docs" }} has-sidebar{{ else }} without-sidebar{{ end }}">
     {{ if eq .Section "docs" }}{{ partial "sidebar.html" . }}{{ end }}
     <main id="content" class="content-area">

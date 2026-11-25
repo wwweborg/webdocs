@@ -32,6 +32,7 @@
   margin-top: 1rem;
   padding: 1rem 1.5rem;
   border-radius: 5rem;
+  corner-shape: squircle;
   background-color: var(--accent);
   transition: ease 0.2s;
 }
@@ -47,6 +48,7 @@
   background-color: var(--surface);
   padding: 1rem 1.5rem;
   border-radius: 5rem;
+  corner-shape: squircle;
   margin-left: .8rem;
   transition: ease 0.2s;
 }
@@ -54,4 +56,32 @@
 .button-secondary:hover {
   background: var(--surface-two);
   color: white;
+}
+
+@media (max-width: 720px) {
+  .home-content {
+    min-height: 55vh;
+    margin: 3rem 0 0;
+  }
+
+  .home-content h2 {
+    font-size: clamp(1.8rem, 8vw, 2.4rem);
+  }
+
+  .home-content > p {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-content {
+    margin-top: 2rem;
+  }
+
+  .button-primary,
+  .button-secondary {
+    justify-content: center;
+    margin: .6rem 0 0;
+    padding: .85rem 1.1rem;
+  }
 }

@@ -16,7 +16,7 @@ enableRobotsTXT = true
 
   [[menus.main]]
     name = 'About'
-    pageRef = '/about'
+    pageRef = '/about.md'
     weight = '30'
 
 [module]

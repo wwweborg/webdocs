@@ -1,0 +1,6 @@
+{{- $type := .Get "type" | default "info" -}}
+{{- if not (in (slice "info" "warning" "error" "important" "idea") $type) -}}
+  {{- $type = "info" -}}
+{{- end -}}
+{{- $icon := .Get "icon" -}}
+<span class="badge badge-{{ $type }}">{{ with $icon }}{{ partial "meteor-icon.html" (dict "name" . "class" "badge-icon") }}{{ end }}{{ .Inner | default (.Get "text") | markdownify }}</span>

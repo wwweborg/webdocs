@@ -1,4 +1,19 @@
-footer {
-  border-top: 1px solid #222;
-  margin-top: 1rem;
+/* = [ Footer ] = */
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 1.2rem 2rem;
+  background-color: var(--surface);
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+@media (max-width: 720px) {
+  .site-footer {
+    flex-wrap: wrap;
+    gap: .5rem 1rem;
+    font-size: .9rem;
+  }
 }

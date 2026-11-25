@@ -1,0 +1,14 @@
+{{- $type := .Get "type" | default "info" -}}
+{{- if not (in (slice "info" "warning" "error" "important" "idea") $type) -}}
+  {{- $type = "info" -}}
+{{- end -}}
+{{- $icon := .Get "icon" | default $type -}}
+{{- $emoji := .Get "emoji" -}}
+{{- $title := .Get "title" -}}
+<aside class="callout callout-{{ $type }}" role="note">
+  <span class="callout-icon" aria-hidden="true">{{- if $emoji }}{{ $emoji }}{{ else }}{{ partial "meteor-icon.html" (dict "name" $icon) }}{{ end -}}</span>
+  <div class="callout-body">
+    {{ with $title }}<p class="callout-title">{{ . }}</p>{{ end }}
+    <div class="callout-content">{{ .Inner | markdownify }}</div>
+  </div>
+</aside>
