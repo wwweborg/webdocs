@@ -37,16 +37,17 @@
       = .footer.css
       = .header.css
       = .home.css
+      = .shortcodes.css
       = .variables.css
 
 ] = */
-@import "/css/components/variables.css";
 @import "/css/components/announcement.css";
+@import "/css/components/header.css";
 @import "/css/components/home.css";
 @import "/css/components/docs.css";
-@import "/css/components/header.css";
-@import "/css/components/footer.css";
 @import "/css/components/shortcodes.css";
+@import "/css/components/variables.css";
+@import "/css/components/footer.css";
 
 /* = [
 
