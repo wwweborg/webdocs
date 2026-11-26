@@ -1,14 +1,149 @@
-content/docs/
-├── _index.md                 # Changelog / section landing page
-├── introduction.md           # What Webdocs is and its features
-├── installation.md           # Requirements, installation, and updates
-├── getting-started.md        # Create a page and preview the site
-├── configuration.md          # Site options, menus, GitHub, and announcements
-├── content-structure.md      # Pages, sections, front matter, and archetypes
-├── navigation.md             # Sidebar, breadcrumbs, table of contents, and page order
-├── shortcodes.md             # Components available in Markdown
-├── appearance.md             # Responsive design, color scheme, and typography
-├── deployment.md             # Build and publish the site
-├── troubleshooting.md        # Common issues and solutions
-├── development.md            # Theme structure and contributions
-└── license-and-credits.md    # Declared license and font credits
+├── archetypes
+│   ├── default.md
+│   └── docs.md
+├── assets
+│   ├── css
+│   │   ├── components
+│   │   │   ├── announcement.css
+│   │   │   ├── docs.css
+│   │   │   ├── footer.css
+│   │   │   ├── header.css
+│   │   │   ├── home.css
+│   │   │   ├── shortcodes.css
+│   │   │   └── variables.css
+│   │   └── main.css
+│   ├── fonts
+│   │   ├── google-sans-code
+│   │   │   ├── code.ttf
+│   │   │   ├── OFL.txt
+│   │   │   └── README.txt
+│   │   └── inter
+│   │       ├── OFL.txt
+│   │       ├── README.txt
+│   │       ├── text-bold.ttf
+│   │       ├── text-medium.ttf
+│   │       └── text.ttf
+│   └── js
+│       └── main.js
+├── content
+│   ├── about.md
+│   ├── docs
+│   │   ├── appearance.md
+│   │   ├── configuration.md
+│   │   ├── content-structure.md
+│   │   ├── deployment.md
+│   │   ├── development.md
+│   │   ├── getting-started.md
+│   │   ├── _index.md
+│   │   ├── installation.md
+│   │   ├── introduction.md
+│   │   ├── license-and-credits.md
+│   │   ├── navigation.md
+│   │   ├── shortcodes.md
+│   │   └── troubleshooting.md
+│   └── _index.md
+├── hugo.toml
+├── layouts
+│   ├── baseof.html
+│   ├── home.html
+│   ├── page.html
+│   ├── _partials
+│   │   ├── announcement.html
+│   │   ├── breadcrumbs.html
+│   │   ├── document-meta.html
+│   │   ├── footer.html
+│   │   ├── head
+│   │   │   ├── css.html
+│   │   │   ├── css-resource.html
+│   │   │   └── js.html
+│   │   ├── header.html
+│   │   ├── head.html
+│   │   ├── menu.html
+│   │   ├── page-nav-collect.html
+│   │   ├── page-nav.html
+│   │   ├── sidebar.html
+│   │   ├── sidebar-tree.html
+│   │   └── terms.html
+│   ├── partials
+│   │   └── meteor-icon.html
+│   ├── section.html
+│   ├── _shortcodes
+│   │   └── title-home.html
+│   └── shortcodes
+│       ├── badge.html
+│       ├── callout.html
+│       ├── card.html
+│       ├── details.html
+│       ├── icon.html
+│       ├── steps.html
+│       ├── tab.html
+│       └── tabs.html
+├── netlify.toml
+│   ├── about
+│   │   └── index.html
+│   ├── categories
+│   │   └── index.xml
+│   ├── css
+│   │   ├── code-OBQQS7Z5.ttf
+│   │   ├── home.css
+│   │   ├── home.css.map
+│   │   ├── main.css
+│   │   ├── main.css.map
+│   │   ├── text-bold-K2QR2KD5.ttf
+│   │   ├── text-medium-VXC6SNUD.ttf
+│   │   └── text-ZQT46P7R.ttf
+│   ├── docs
+│   │   ├── appearance
+│   │   │   └── index.html
+│   │   ├── configuration
+│   │   │   └── index.html
+│   │   ├── content-structure
+│   │   │   └── index.html
+│   │   ├── contiguration
+│   │   │   └── index.html
+│   │   ├── deployment
+│   │   │   └── index.html
+│   │   ├── development
+│   │   │   └── index.html
+│   │   ├── getting-started
+│   │   │   └── index.html
+│   │   ├── hi
+│   │   │   └── index.html
+│   │   ├── index.html
+│   │   ├── index.xml
+│   │   ├── installation
+│   │   │   └── index.html
+│   │   ├── introduction
+│   │   │   └── index.html
+│   │   ├── license-and-credits
+│   │   │   └── index.html
+│   │   ├── navigation
+│   │   │   └── index.html
+│   │   ├── other
+│   │   │   ├── index.html
+│   │   │   ├── index.xml
+│   │   │   └── new
+│   │   │       └── index.html
+│   │   ├── shortcodes
+│   │   │   └── index.html
+│   │   └── troubleshooting
+│   │       └── index.html
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── index.xml
+│   ├── js
+│   │   ├── main.js
+│   │   └── main.js.map
+│   ├── posts
+│   │   ├── hi
+│   │   │   └── index.html
+│   │   ├── index.html
+│   │   └── index.xml
+│   ├── robots.txt
+│   ├── sitemap.xml
+│   └── tags
+│       └── index.xml
+├── static
+│   └── favicon.ico
+├── theme.toml
+└── tree
