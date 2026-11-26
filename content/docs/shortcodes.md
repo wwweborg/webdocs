@@ -1,127 +1,113 @@
 +++
-date = '2026-11-24T15:11:46-05:00'
+date = '2026-11-25'
 draft = false
+weight = 8
 title = 'Shortcodes'
-weight = 10
-description = 'Hola a todos'
+description = 'Visual components available in Markdown content.'
+author = 'J. Nuck'
 +++
 
-Webdocs incluye shortcodes para añadir componentes visuales en archivos Markdown. Los atributos se escriben como `nombre="valor"`.
+Shortcodes add Webdocs components to your Markdown pages. Attributes use the `name="value"` format, and the content between the tags can include Markdown.
 
 ## Callouts
 
-Bloques destacados: `info` (azul), `warning` (amarillo), `error` (rojo), `important` (morado) e `idea` (verde). El tipo predeterminado es `info`.
+Use `callout` to highlight a note. `type` accepts `info` (the default), `warning`, `error`, `important`, or `idea`. `title` and `icon` are optional; `emoji` displays an emoji instead of the icon.
 
-Puedes cambiar el icono Meteor con `icon` o usar un emoji con `emoji`. El contenido admite Markdown:
+```md
+{{</* callout type="warning" title="Before you continue" */>}}
+Back up your data before making this change.
+{{</* /callout */>}}
+```
 
-{{< callout type="info" emoji="🚀" >}}
-La publicación terminó correctamente.
-{{< /callout >}}
-{{< callout type="warning" emoji="🚀" >}}
-La publicación terminó correctamente.
-{{< /callout >}}
-{{< callout type="error" emoji="🚀" >}}
-La publicación terminó correctamente.
-{{< /callout >}}
-{{< callout type="important" emoji="🚀" >}}
-La publicación terminó correctamente.
-{{< /callout >}}
-{{< callout type="idea" emoji="🚀" >}}
-La publicación terminó correctamente.
-{{< /callout >}}
-{{< callout type="idea" icon="rocket" >}}
-La publicación terminó correctamente.
-{{< /callout >}}
+```md
+{{</* callout type="idea" emoji="✨" */>}}
+You can also use **Markdown** in the text.
+{{</* /callout */>}}
+```
 
-## Badges {{< badge type="warning" text="En progreso" />}}
+## Badges
 
-Etiquetas pequeñas con los mismos tipos y colores de los callouts. `text` puede usarse como atributo o como contenido. El icono es opcional.
+`badge` creates a small label. Pass its text with the `text` attribute or as inner content; `type` accepts the same values as `callout`, and the icon is optional.
 
-{{< badge type="warning" text="En progreso" />}}
-{{< badge type="idea" icon="check" >}}Listo{{< /badge >}}
-
-Los tipos disponibles son `info`, `warning`, `error`, `important` e `idea`. Si se omite `type`, se usa `info`.
+```md
+{{</* badge type="warning" text="In progress" */>}}
+{{</* badge type="idea" icon="check" */>}}Done{{</* /badge */>}}
+```
 
 ## Cards
 
-Enlaces tipo tarjeta con título, descripción y flecha. `href` puede ser una ruta del sitio o una URL externa. El icono es opcional.
+`card` creates a card. `title` and `description` are optional; if no title is provided, “Learn more” is used. Setting `href` makes the card a link; without `href`, it is displayed as non-linked content. It also accepts `icon` and Markdown content:
 
-{{< card href="/docs/getting-started/" title="Guía de inicio" description="Configura el proyecto paso a paso." icon="rocket" />}}
-
-Sin `href`, la tarjeta se muestra como un bloque no enlazado:
-
-{{< card title="Próximamente" description="Esta sección todavía está en preparación." />}}
-
-El contenido del bloque también admite Markdown:
-
-{{< card href="/docs/getting-started/" title="Siguiente paso" icon="arrow-right" >}}
-Empieza con `hugo server` y consulta la **guía completa**.
-{{< /card >}}
+```md
+{{</* card href="/docs/getting-started/" title="Getting started" description="Create and preview your documentation." icon="rocket" */>}}
+Continue to the **getting started guide**.
+{{</* /card */>}}
+```
 
 ## Details
 
-Acordeón nativo para contenido que se puede expandir. Añade `open="true"` para mostrarlo abierto inicialmente.
+`details` creates a native HTML disclosure. `title` sets its summary text. Add `open="true"` to show it expanded on page load:
 
-{{< details title="¿Cómo se instala?" >}}
-Ejecuta `hugo server` desde la raíz del proyecto.
-{{< /details >}}
+```md
+{{</* details title="How do I start the server?" */>}}
+Run `hugo server` from the root of your site.
+{{</* /details */>}}
+```
 
-## Iconos
+## Icons
 
-Inserta un icono Meteor en línea. El nombre se indica con `name` o como primer argumento. Puedes añadir `label` para describirlo a lectores de pantalla y `class` para asignar una clase CSS.
+`icon` inserts an inline icon. Pass its name using the `name` attribute or as the first argument. `label` provides an accessible name, and `class` lets you add a CSS class.
 
-Los iconos integrados son `info`, `warning`, `error`, `important`, `idea`, `sparkles`, `rocket`, `arrow-right`, `chevron-right`, `external-link`, `check` y `copy`. Para añadir otro icono Meteor, copia su SVG a `assets/icons/meteor/` y nómbralo, por ejemplo, `book-open.svg`; luego usa `name="book-open"` en el shortcode `icon` o `icon="book-open"` en otro shortcode.
+```md
+{{</* icon name="arrow-right" label="Next" */>}}
+{{</* icon "check" */>}}
+```
 
-{{< icon name="rocket" >}} Continuar
-{{< icon name="arrow-right" >}} Continuar
+Built-in icons are `info`, `warning`, `error`, `important`, `idea`, `sparkles`, `rocket`, `arrow-right`, `chevron-right`, `external-link`, `check`, and `copy`. Additional SVGs can also be loaded from `assets/icons/meteor/<name>.svg`.
 
 ## Steps
 
-Muestra una lista ordenada con números dentro de recuadros redondeados. Escribe los pasos como una lista Markdown normal. Puedes añadir una descripción en un párrafo separado y sublistas con guiones o numeración; indenta el contenido para que pertenezca al paso.
+`steps` displays an ordered list with visual numbering. Write a regular Markdown list inside it; each item can contain paragraphs and nested lists:
 
-{{< steps >}}
-1. **Instala Hugo**
+```md
+{{</* steps */>}}
+1. **Install Hugo**
 
-   Descarga la versión extendida y comprueba la instalación:
+   Download the Extended version and verify the installation.
 
-   - Revisa que Hugo esté disponible en la terminal.
-   - Confirma la versión instalada.
+2. **Start the site**
 
-2. **Crea el sitio**
+   Run `hugo server` and open the local URL shown in the terminal.
+{{</* /steps */>}}
+```
 
-   Puedes seguir estos pasos adicionales:
+## Tabs
 
-   1. Clona el repositorio.
-   2. Entra en la carpeta del proyecto.
+`tabs` groups one or more `tab` shortcodes. Each tab needs a `title`; the `label` attribute on `tabs` describes the group. The first tab is selected by default.
 
-3. **Inicia el servidor**
-
-   Ejecuta `hugo server` y abre la dirección local en el navegador.
-{{< /steps >}}
-
-## Pestañas
-
-Agrupa paneles con una pestaña por bloque. Cada panel se declara con `tab` y un `title`. La primera pestaña queda seleccionada inicialmente. Si JavaScript no está disponible, se muestran todos los paneles. Mantén cada bloque `tab` dentro de `tabs`; puedes incluir Markdown, listas y bloques de código:
-
-{{< tabs >}}
-  {{< tab title="Bash" >}}
-  ```bash
+````md
+{{</* tabs label="Development commands" */>}}
+  {{</* tab title="Bash" */>}}
+  ```sh
   hugo server
   ```
-  {{< /tab >}}
-  {{< tab title="PowerShell" >}}
+  {{</* /tab */>}}
+  {{</* tab title="PowerShell" */>}}
   ```powershell
   hugo server -D
   ```
-  {{< /tab >}}
-{{< /tabs >}}
+  {{</* /tab */>}}
+{{</* /tabs */>}}
+````
 
-### Mostrar la sintaxis de un shortcode como código
+With JavaScript enabled, you can switch tabs by clicking or using the left/right arrow keys and Home/End. If JavaScript is unavailable, all panels remain visible.
 
-Hugo evalúa los shortcodes aunque estén dentro de un bloque de código. Para mostrar su sintaxis literalmente en una página, escapa sus delimitadores:
+## Display shortcodes as code
 
-```md
-{{</* callout type="info" title="Nota" */>}}
-Este texto se muestra como ejemplo, no como un componente.
+Hugo also processes shortcodes inside code blocks. To display them literally, wrap the delimiters with `/*` and `*/`:
+
+````md
+{{</* callout type="info" */>}}
+This example is displayed as code and is not executed.
 {{</* /callout */>}}
-```
+````

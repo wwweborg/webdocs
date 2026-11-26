@@ -1,0 +1,14 @@
+content/docs/
+├── _index.md                 # Changelog / section landing page
+├── introduction.md           # What Webdocs is and its features
+├── installation.md           # Requirements, installation, and updates
+├── getting-started.md        # Create a page and preview the site
+├── configuration.md          # Site options, menus, GitHub, and announcements
+├── content-structure.md      # Pages, sections, front matter, and archetypes
+├── navigation.md             # Sidebar, breadcrumbs, table of contents, and page order
+├── shortcodes.md             # Components available in Markdown
+├── appearance.md             # Responsive design, color scheme, and typography
+├── deployment.md             # Build and publish the site
+├── troubleshooting.md        # Common issues and solutions
+├── development.md            # Theme structure and contributions
+└── license-and-credits.md    # Declared license and font credits

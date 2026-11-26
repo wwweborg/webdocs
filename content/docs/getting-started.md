@@ -1,44 +1,63 @@
 +++
-title = 'Introduction'
-description = '👋 Hello! Welcome to the Hextra documentation!'
-weight = 1
-lastmod = '2026-11-24'
-author = '@johndoe'
+date = '2026-11-25T19:57:26-05:00'
+draft = false
+weight = 4
+title = 'Getting Started'
+description = 'Create the first page and view it locally.'
+author = 'J. Nuck'
 +++
 
-## What is Hextra?
+You don't need to create the Markdown files manually from your code editor; Hugo includes a command that generates the page with the proper initial structure (*archetype*).
 
-Hextra is a modern, fast and **batteries-included** [Hugo][hugo] theme built with [Tailwind CSS][tailwind-css].
-Designed for building beautiful websites for documentation, blogs, and websites, it provides out-of-the-box features and flexibility to meet various requirements.
+{{< steps >}}
 
-## Features
+1. **Open the terminal in the project root**
 
-- **Beautiful Design** - Inspired by Nextra, Hextra utilizes Tailwind CSS to offer a modern design that makes your site look outstanding.
-- **Responsive Layout and Dark Mode** - It looks great on all devices, from mobile, tablet to desktop. Dark mode is also supported to accommodate various lighting conditions.
-- **Fast and Lightweight** - Powered by Hugo, a lightning-fast static-site generator housed in a single binary file, Hextra keeps its footprint minimal. No JavaScript or Node.js are needed to use it.
-- **Full-text Search** - Built-in offline full-text search powered by FlexSearch, no additional configuration required.
-- **Battery-included** - Markdown, syntax highlighting, LaTeX math formulae, diagrams and Shortcodes elements to enhance your content. Table of contents, breadcrumbs, pagination, sidebar navigation and more are all automatically generated.
-- **Multi-language and SEO Ready** - Multi-language sites made easy with Hugo's multilingual mode. Out-of-the-box support is included for SEO tags, Open Graph, and Twitter Cards.
-- **Accessibility Support** - Interactive components use semantic markup, keyboard-friendly behavior, and automated accessibility checks to keep the UI usable across common assistive workflows.
+   If you use **VS Code**, you can open it quickly with `Ctrl` + `J` (or `Cmd` + `J` on macOS).
 
-## Questions or Feedback?
+2. **Generate the file with Hugo**
 
+   Run the following command, replacing `file-name` with your page's identifier:
 
-  Hextra is still in active development.
-  Have a question or feedback? Feel free to [open an issue](https://github.com/imfing/hextra/issues)!
+   ```bash
+   hugo new content/docs/file-name.md
+   ```
 
-## Next
+3. **Edit and publish the content**
 
-Dive right into the following section to get started:
+   Open the newly created file inside `content/docs/`. In the header (*front matter*), change `draft` to `false` when it's ready to be published:
 
+   ```toml
+   +++
+   title = "My first page"
+   draft = false
+   +++
+   ```
 
-[hugo]: https://gohugo.io/
-[flex-search]: https://github.com/nextapps-de/flexsearch
-[tailwind-css]: https://tailwindcss.com/
+{{< /steps >}}
 
-```md
----
-title: Guide
-weight: 2
----
+{{< callout type="info" >}}
+By default, Hugo marks new pages with `draft = true`. While it has that value, the page won't appear in the final site build unless you change it to `false`.
+{{< /callout >}}
+
+## Preview the Site Locally
+
+To see changes in real time in your browser, start Hugo's development server from the terminal:
+
+{{< tabs >}}
+
+{{< tab title="Published content only" >}}
+```bash
+hugo server
 ```
+{{< /tab >}}
+
+{{< tab title="Including drafts" >}}
+```bash
+hugo server -D
+```
+{{< /tab >}}
+
+{{< /tabs >}}
+
+Once you've run the command, open the local address shown in the console in your browser (usually `http://localhost:1313/`). Every time you save a file, the page will reload automatically.
